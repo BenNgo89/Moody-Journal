@@ -5,3 +5,20 @@ html {
 #nav-form {
   float: right;
 }
+
+.mb-5{
+  font-family: 'Permanent Marker', cursive;
+}
+
+#question{
+  font-size: 75px;
+
+}
+
+h1, .mb-0{
+  /* font-family: 'Gloria Hallelujah', cursive; */
+  font-family: 'Permanent Marker', cursive;
+  font-size: 25px;
+  padding-left: 5px;
+
+}
