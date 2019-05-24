@@ -47,4 +47,11 @@ module.exports = function(app) {
       });
     }
   });
+
+  // app.post("/api/diaries", function(req, res) {
+  //   db.Diary.create({
+  //     mo
+  //   })
+  // });
+
 };
