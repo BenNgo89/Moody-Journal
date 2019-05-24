@@ -3,7 +3,7 @@ var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-  app.get("/", function(req, res) {
+  app.get("/signup", function(req, res) {
     //Users are redirected to /members if they already have an account
     if (req.user) {
       res.redirect("/members");
