@@ -22,3 +22,15 @@ h1, .mb-0{
   padding-left: 5px;
 
 }
+
+.navbutton{
+    font-family: 'Gloria Hallelujah', cursive;
+    margin-right: 15px;
+}
+
+.navbar-brand {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 30px;
+  margin-left: 15px;
+
+}
