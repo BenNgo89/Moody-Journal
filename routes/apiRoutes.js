@@ -3,11 +3,11 @@ var passport = require("../config/passport");
 
 module.exports = function(app) {
   //Using the passport.authenticate middleware with out local strategy
-  //If the user has valid login credentials, send them to the members page. Otherwise send an error.
+  //If the user has valid login credentials, send them to the welcome page. Otherwise send an error.
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    //Send the user to a /members route because the redirect will happen on the front end
-    //Users will not get this or even be able to access the /members page if they aren't authenticated
-    res.json("/members");
+    //Send the user to a /welcome route because the redirect will happen on the front end
+    //Users will not get this or even be able to access the /welcome page if they aren't authenticated
+    res.json("/welcome");
   });
 
   /*Route for signing up a user. User passwords are automatically hashed and stored securely because of 
@@ -48,10 +48,17 @@ module.exports = function(app) {
     }
   });
 
-  // app.post("/api/diaries", function(req, res) {
-  //   db.Diary.create({
-  //     mo
-  //   })
-  // });
-
+  //Post route for saving a mood
+  app.post("/api/diary", function(req, res) {
+    console.log(req.body);
+    //I think my problem is describing the paramter I want to insert into the Diary table.
+    //Passing in the following object may or may not make sense (like req.feeling which I guessed would work from the moods.js file)
+    db.Diary.create({
+      mood: req.feeling.mood,
+      value: req.feeling.value,
+      userId: req.user
+    }).then(function(dbDiary) {
+      res.json(dbDiary);
+    });
+  });
 };

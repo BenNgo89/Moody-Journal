@@ -4,23 +4,31 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/signup", function(req, res) {
-    //Users are redirected to /members if they already have an account
+    //Users are redirected to /welcome if they already have an account
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/welcome");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", function(req, res) {
-    //Users are redirected to /members if they already have an account
+    //Users are redirected to /welcome if they already have an account
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/welcome");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
-  //Authentication added to /members so users who are not logged in get redirected to sign up
-  app.get("/members", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
+  app.get("/", function(req, res) {
+    if (!req.user) {
+      res.sendFile(path.join(__dirname, "../public/index.html"));
+    } else {
+      res.sendFile(path.join(__dirname, "../public/welcome.html"));
+    }
+  });
+
+  //Authentication added to /welcome so users who are not logged in get redirected to sign up
+  app.get("/welcome", isAuthenticated, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/welcome.html"));
   });
 };
