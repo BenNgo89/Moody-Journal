@@ -7,13 +7,23 @@ $(document).ready(function() {
   $(document).on("click", "#badMood", insertBad);
   $(document).on("click", "#terribleMood", insertTerrible);
 
+  //Create an object to store user requests
+  var API = {
+    saveMood: function(mood) {
+      return $.ajax({
+        type: "POST",
+        url: "api/user_data",
+        data: JSON.stringify(mood)
+      });
+    }
+  };
+
   function insertFine() {
     var feeling = {
       mood: "fine",
       value: 2
     };
-    console.log("damn right lil baby");
-    $.post("/api/user_data", feeling);
+    $.post("/api/diary", feeling);
   }
 
   function insertHappy() {
@@ -31,7 +41,7 @@ $(document).ready(function() {
       value: 1
     };
 
-    $.post("/api/user_data", feeling);
+    $.post("/api/diary", feeling);
   }
 
   function insertTerrible() {
@@ -40,6 +50,6 @@ $(document).ready(function() {
       value: 0
     };
 
-    $.post("/api/user_data", feeling);
+    $.post("/api/diary", feeling);
   }
 });

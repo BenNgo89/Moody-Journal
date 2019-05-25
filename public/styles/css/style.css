@@ -32,10 +32,8 @@ h2{
     margin-right: 15px;
 }
 
-.navbar-brand {
-  font-family: 'Gloria Hallelujah', cursive;
-  font-size: 30px;
-  margin-left: 15px;
+#exist{
+  font-size: 20px;
 
 }
 
@@ -43,3 +41,4 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
