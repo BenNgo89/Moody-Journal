@@ -1,7 +1,7 @@
 $(document).ready(function() {
   //var $newJournalEntry = $(#user-type); to reference input field of what user journals
 
-  //Here are event listeners for button/link functionalities
+  //For moods: Here are event listeners for button/link functionalities
   $(document).on("click", "#fineMood", insertFine);
   $(document).on("click", "#happyMood", insertHappy);
   $(document).on("click", "#badMood", insertBad);
@@ -42,4 +42,11 @@ $(document).ready(function() {
 
     $.post("/api/user_data", feeling);
   }
+
+  // //For nav-bar
+  // $(document).on("click", "#logout", function() {
+  //   $.get("/logout", function(data, res){
+
+  //   });
+  // });
 });

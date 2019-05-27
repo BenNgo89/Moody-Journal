@@ -7,7 +7,7 @@ module.exports = function(app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     //Send the user to a /members route because the redirect will happen on the front end
     //Users will not get this or even be able to access the /members page if they aren't authenticated
-    res.json("/members");
+    res.json("/home");
   });
 
   /*Route for signing up a user. User passwords are automatically hashed and stored securely because of 
