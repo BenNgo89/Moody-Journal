@@ -48,15 +48,32 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/api/diary", function(req, res) {
+    if (!req.user) {
+      res.json({});
+    } else {
+      res.json(
+        // {
+        //   email: req.user.email,
+        //   id: req.user.id
+        // },
+        {
+          mood: req.user.mood,
+          value: req.user.value
+        }
+      );
+    }
+  });
+
   //Post route for saving a mood
   app.post("/api/diary", function(req, res) {
     console.log(req.body);
+    console.log(req.user);
     //I think my problem is describing the paramter I want to insert into the Diary table.
     //Passing in the following object may or may not make sense (like req.feeling which I guessed would work from the moods.js file)
     db.Diary.create({
-      mood: req.feeling.mood,
-      value: req.feeling.value,
-      userId: req.user
+      mood: req.mood,
+      value: req.value
     }).then(function(dbDiary) {
       res.json(dbDiary);
     });
