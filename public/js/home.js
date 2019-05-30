@@ -42,11 +42,24 @@ $(document).ready(function() {
 
     $.post("/api/user_data", feeling);
   }
-
-  // //For nav-bar
-  // $(document).on("click", "#logout", function() {
-  //   $.get("/logout", function(data, res){
-
-  //   });
-  // });
+  // activities
+  $("#user-add").on("click", function() {
+    var newActivity = {
+      activity: $("#user-input").val(),
+      UserId: $(this).data("user")
+    };
+    $.ajax("/api/activity", {
+      type: "POST",
+      data: newActivity
+    }).then(function(res) {
+      console.log("New activity posted");
+      console.log(res);
+      var newButton = $("<a>")
+        .addClass("btn btn-xl btn-dark mt-2 mr-2")
+        .attr("href", "#");
+      newButton.text(res.activity);
+      $("#action").append(newButton);
+    });
+    $("#user-input").val("");
+  });
 });

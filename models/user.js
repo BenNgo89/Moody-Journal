@@ -36,5 +36,11 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
+  User.associate = function(models) {
+    models.User.hasMany(models.Journal, {
+      onDelete: "cascade" //If you delete a user, all associated diaries will be deleted
+    });
+  };
+
   return User;
 };

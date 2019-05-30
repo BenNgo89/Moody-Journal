@@ -48,10 +48,46 @@ module.exports = function(app) {
     }
   });
 
-  // app.post("/api/diaries", function(req, res) {
-  //   db.Diary.create({
-  //     mo
-  //   })
-  // });
+  //Post route for saving a mood
+  app.post("/api/diary", function(req, res) {
+    console.log(req.body);
+    //I think my problem is describing the paramter I want to insert into the Diary table.
+    //Passing in the following object may or may not make sense (like req.feeling which I guessed would work from the moods.js file)
+    db.Diary.create({
+      mood: req.feeling.mood,
+      value: req.feeling.value,
+      userId: req.user
+    }).then(function(dbDiary) {
+      res.json(dbDiary);
+    });
+  });
 
+  //Post route for user activities
+  app.post("/api/activity", function(req, res) {
+    console.log(req.body);
+
+    // We have access to the journal as an argument inside of the callback function
+    db.Journal.create({
+      UserId: req.body.UserId,
+      activity: req.body.activity
+    }).then(function(dbJournal) {
+      res.json(dbJournal);
+    });
+  });
+
+  app.get("/api/user_activity/:id", function(req, res) {
+    var id = req.params.id;
+    db.Journal.findAll({
+      where: {
+        UserId: id
+      }
+    })
+      .then(function(dbUserActivity) {
+        res.json(dbUserActivity);
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+      });
+  });
 };
