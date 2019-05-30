@@ -27,7 +27,18 @@ h2{
   padding-bottom: 25px;
 }
 
+.navbutton{
+    font-family: 'Gloria Hallelujah', cursive;
+    margin-right: 15px;
+}
+
 #exist{
   font-size: 20px;
 
 }
+
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
