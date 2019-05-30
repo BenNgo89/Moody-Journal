@@ -21,7 +21,7 @@ $(document).ready(function() {
       value: 3
     };
 
-    $.post("/api/diary", feeling); //need to know user id
+    $.post("/api/diary", feeling);
   }
 
   function insertBad() {
