@@ -6,11 +6,12 @@ if (process.env.JAWSDB_URL) {
 else {
   connection = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "Benjaminngo1227",
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
     database: "example_db"
   });
 }
 
 connection.connect();
 module.exports = connection;
+}
