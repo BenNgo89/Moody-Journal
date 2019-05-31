@@ -7,17 +7,6 @@ $(document).ready(function() {
   $(document).on("click", "#badMood", insertBad);
   $(document).on("click", "#terribleMood", insertTerrible);
 
-  //Create an object to store user requests
-  var API = {
-    saveMood: function(mood) {
-      return $.ajax({
-        type: "POST",
-        url: "api/user_data",
-        data: JSON.stringify(mood)
-      });
-    }
-  };
-
   function insertFine() {
     var feeling = {
       mood: "fine",
@@ -32,7 +21,7 @@ $(document).ready(function() {
       value: 3
     };
 
-    $.post("/api/diary", feeling); //need to know user id
+    $.post("/api/diary", feeling);
   }
 
   function insertBad() {
