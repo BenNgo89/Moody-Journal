@@ -28,7 +28,11 @@ module.exports = function(app) {
     if (!req.user) {
       res.sendFile(path.join(__dirname, "../public/index.html"));
     } else {
-      res.sendFile(path.join(__dirname, "../public/welcome.html"));
+      res.sendFile(path.join(__dirname, "../public/home.html"));
     }
+  });
+
+  app.get("/journal", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/journal.html"))
   });
 };

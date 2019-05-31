@@ -55,7 +55,7 @@ $(document).ready(function() {
       console.log(res);
       var newButton = $("<a>")
         .addClass("btn btn-xl btn-dark mt-2 mr-2")
-        .attr("href", "#");
+        .attr("href", "/journal");
       newButton.text(res.activity);
       $("#action").append(newButton);
     });
