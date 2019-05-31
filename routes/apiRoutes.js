@@ -52,6 +52,11 @@ module.exports = function(app) {
     if (!req.user) {
       res.json({});
     } else {
+      db.Diary.findAll({
+        where: {
+          UserId: req.user.id
+        }
+      });
       res.json({
         mood: req.body.mood,
         value: req.body.value,
