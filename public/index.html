@@ -24,108 +24,32 @@
 <link href="styles/css/style.css" rel="stylesheet">
 
 </head>
+<body>
   <!-- Header -->
-  <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-        <img src="styles/img/logo.png" width="40" height="40" class="d-inline-block align-top" alt="">
+  <nav class="navbar navbar-light bg-light justify-content-center">
+      <a class="navbar-brand text-center" href="#">
+        <img src="styles/img/logo.png" width="40" height="40" class="d-inline-block align-top text-center" alt="">
         Moody Journal
       </a> 
-      <sapn class="navbutton">
-          <button type="button" class="btn btn-dark">Your Journal</button>
-          <button type="button" class="btn btn-dark">Log-out</button>
-      </sapn>
-  
-  <!-- Main -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form id="nav-form" class="form-inline my-2 my-lg-0 ml-auto">
-        <span>Id</span><input class="form-control mr-sm-2 ml-2" type="search" placeholder="id" aria-label="Search">
-        <span>Password</span><input class="form-control mr-sm-2 ml-2" type="search" placeholder="password" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0 mr-1" type="submit">Log in</button>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up</button>
-      </form>
-    </div>
   </nav>
 
   <!-- Main -->
   <section class="content-section" id="portfolio">
     <div class="container">
-      <div class="content-section-heading text-center">
-        <h2 class="mb-5" id="question">How are you feeling?</h2>
+      <div class="content-section-heading text-center mb-5">
+        <h2 class="mb-2">How are you feeling?</h2>
+        <h4 class="mb-5">Write your mood journal and check them monthly</h4> 
       </div>
-      <div class="row no-gutters">
-        <div class="col-lg-6">
-          <a class="portfolio-item scroll-behavior:smooth" href="#action" id="fineMood">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Moderate</h2>
-                <p class="mb-0">Feeling moderate. <br>Just average, medium mood.</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="styles/img/1-moderate.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item js-scroll-trigger" href="#action" id="happyMood">
-            <span class="caption">
-              <span class="caption-content">
-                <h1>Good</h1>
-                <p class="mb-0">Feeling good. <br>Happy mood!</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="styles/img/2-good.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item js-scroll-trigger" href="#action" id="badMood">
-            <span class="caption">
-              <span class="caption-content">
-
-                <h1>Bad</h1>
-                <p class="mb-0">Feeling bad. <br>Not a good mood.</p>
-
-              </span>
-            </span>
-            <img class="img-fluid" src="styles/img/3-bad.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item js-scroll-trigger" href="#action" id="terribleMood">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Very Bad</h2>
-                <p class="mb-0">Feeling terrible. <br>Very bad mood.</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="styles/img/4-verybad.jpg" alt="">
-          </a>
-        </div>
+      <div class="text-center mt-5">
+        <a href="/login">
+        <button type="button" class="btn btn-success btn-lg mt-5 mr-2">Log-in</button>
+      </a>
+      <a href="/signup">
+        <button type="button" class="btn btn-warning btn-lg mt-5 ml-2">Sign-up</button>
+      </a>
       </div>
     </div>
   </section>
-
-  <!-- Call to Action -->
-  <section class="content-section bg-secondary text-white">
-    <div id="action" class="container text-center">
-      <h2 class="mb-4">What happened today?</h2>
-      <a href="#" class="btn btn-xl btn-dark">Exercise</a>
-      <a href="#" class="btn btn-xl btn-dark">Slept well last night</a>
-      <a href="#" class="btn btn-xl btn-dark">Conflict with someone</a>
-
-    </div>
-    <div id="user-type" class="container text-center">
-      <div class="input-group mb-3 mt-5">
-        <input type="text" class="form-control" placeholder="Add an activity" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-secondary" type="button" id="user-add">Add</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
- 
-
-  <!-- Footer -->
-
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -143,6 +67,7 @@
 
   <!-- Front End script for MySQL interaction-->
   <script src="js/moods.js"></script>
+  <script type="text/javascript" src="js/members.js"></script>
 
 </body>
 
