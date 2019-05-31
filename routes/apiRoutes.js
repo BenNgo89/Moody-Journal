@@ -3,7 +3,7 @@ var passport = require("../config/passport");
 
 module.exports = function(app) {
   //Using the passport.authenticate middleware with out local strategy
-  //If the user has valid login credentials, send them to the members page. Otherwise send an error.
+  //If the user has valid login credentials, send them to the welcome page. Otherwise send an error.
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     //Send the user to a /members route because the redirect will happen on the front end
     //Users will not get this or even be able to access the /members page if they aren't authenticated
