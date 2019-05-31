@@ -48,41 +48,18 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/diary", function(req, res) {
-    if (!req.user) {
-      res.json({});
-    } else {
-      db.Diary.findAll({
-        where: {
-          UserId: req.user.id
-        }
-      });
-      res.json({
-        mood: req.body.mood,
-        value: req.body.value,
-        UserId: req.user.id
-      });
-    }
-  });
-
   //Post route for saving a mood
   app.post("/api/diary", function(req, res) {
     console.log(req.body);
-    console.log(req.user);
     //I think my problem is describing the paramter I want to insert into the Diary table.
-    // db.User.findWhere and then pass a value to access the id from the user logged. //Passing in the following object may or may not make sense (like req.feeling which I guessed would work from the moods.js file)
+    //Passing in the following object may or may not make sense (like req.feeling which I guessed would work from the moods.js file)
     db.Diary.create({
-      mood: req.body.mood,
-      value: req.body.value,
-      UserId: req.user.id
-    })
-      .then(function(dbDiary) {
-        res.json(dbDiary);
-      })
-      .catch(function(err) {
-        console.log(err);
-        res.json(err);
-      });
+      mood: req.feeling.mood,
+      value: req.feeling.value,
+      userId: req.user
+    }).then(function(dbDiary) {
+      res.json(dbDiary);
+    });
   });
 
   //Post route for user activities
