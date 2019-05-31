@@ -5,9 +5,9 @@ module.exports = function(app) {
   //Using the passport.authenticate middleware with out local strategy
   //If the user has valid login credentials, send them to the welcome page. Otherwise send an error.
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    //Send the user to a /welcome route because the redirect will happen on the front end
-    //Users will not get this or even be able to access the /welcome page if they aren't authenticated
-    res.json("/welcome");
+    //Send the user to a /members route because the redirect will happen on the front end
+    //Users will not get this or even be able to access the /members page if they aren't authenticated
+    res.json("/home");
   });
 
   /*Route for signing up a user. User passwords are automatically hashed and stored securely because of 
@@ -48,17 +48,69 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/api/diary", function(req, res) {
+    if (!req.user) {
+      res.json({});
+    } else {
+      db.Diary.findAll({
+        where: {
+          UserId: req.user.id
+        }
+      });
+      res.json({
+        mood: req.body.mood,
+        value: req.body.value,
+        UserId: req.user.id
+      });
+    }
+  });
+
   //Post route for saving a mood
   app.post("/api/diary", function(req, res) {
     console.log(req.body);
+    console.log(req.user);
     //I think my problem is describing the paramter I want to insert into the Diary table.
-    //Passing in the following object may or may not make sense (like req.feeling which I guessed would work from the moods.js file)
+    // db.User.findWhere and then pass a value to access the id from the user logged. //Passing in the following object may or may not make sense (like req.feeling which I guessed would work from the moods.js file)
     db.Diary.create({
-      mood: req.feeling.mood,
-      value: req.feeling.value,
-      userId: req.user
-    }).then(function(dbDiary) {
-      res.json(dbDiary);
+      mood: req.body.mood,
+      value: req.body.value,
+      UserId: req.user.id
+    })
+      .then(function(dbDiary) {
+        res.json(dbDiary);
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+      });
+  });
+
+  //Post route for user activities
+  app.post("/api/activity", function(req, res) {
+    console.log(req.body);
+
+    // We have access to the journal as an argument inside of the callback function
+    db.Journal.create({
+      UserId: req.body.UserId,
+      activity: req.body.activity
+    }).then(function(dbJournal) {
+      res.json(dbJournal);
     });
+  });
+
+  app.get("/api/user_activity/:id", function(req, res) {
+    var id = req.params.id;
+    db.Journal.findAll({
+      where: {
+        UserId: id
+      }
+    })
+      .then(function(dbUserActivity) {
+        res.json(dbUserActivity);
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+      });
   });
 };

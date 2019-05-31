@@ -24,6 +24,7 @@
 <link href="styles/css/style.css" rel="stylesheet">
 
 </head>
+<body>
   <!-- Header -->
   <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="#">
@@ -31,11 +32,14 @@
         Moody Journal
       </a> 
       <sapn class="navbutton">
-          <button type="button" class="btn btn-dark">Your Journal</button>
-          <button type="button" class="btn btn-dark">Log-out</button>
-      </sapn>
+          <span>Welcome <span class="member-name"></span></span>
+          <button id="journal" type="button" class="btn btn-dark">Your Journal</button>
+        <a href="/logout">
+          <button id="logout" type="button" class="btn btn-dark">Log-out</button>
+        </a>
+        </sapn>
   
-  <!-- Main -->
+  <!-- main -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form id="nav-form" class="form-inline my-2 my-lg-0 ml-auto">
         <span>Id</span><input class="form-control mr-sm-2 ml-2" type="search" placeholder="id" aria-label="Search">
@@ -50,7 +54,7 @@
   <section class="content-section" id="portfolio">
     <div class="container">
       <div class="content-section-heading text-center">
-        <h2 class="mb-5" id="question">How are you feeling? <span class="member-name"></span></h2>
+        <h2 class="mb-5" id="question">How are you feeling?</h2>
       </div>
       <div class="row no-gutters">
         <div class="col-lg-6">
@@ -79,8 +83,8 @@
           <a class="portfolio-item js-scroll-trigger" href="#action" id="badMood">
             <span class="caption">
               <span class="caption-content">
-                <h2>Bad</h2>
-                <p class="mb-0">Feeling bad. <br>Not a good mood..</p>
+                <h1>Bad</h1>
+                <p class="mb-0">Feeling bad. <br>Not a good mood.</p>
               </span>
             </span>
             <img class="img-fluid" src="styles/img/3-bad.jpg" alt="">
@@ -108,11 +112,11 @@
       <a href="#" class="btn btn-xl btn-dark">Exercise</a>
       <a href="#" class="btn btn-xl btn-dark">Slept well last night</a>
       <a href="#" class="btn btn-xl btn-dark">Conflict with someone</a>
-
+      
     </div>
     <div id="user-type" class="container text-center">
       <div class="input-group mb-3 mt-5">
-        <input type="text" class="form-control" placeholder="Add an activity" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <input id="user-input" type="text" class="form-control" placeholder="Add an activity" aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-secondary" type="button" id="user-add">Add</button>
         </div>
@@ -122,8 +126,6 @@
 
  
 
-  <!-- Footer -->
-  
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -139,9 +141,12 @@
   <!-- Custom scripts for this template -->
   <script src="styles/css/stylish-portfolio.min.js"></script>
 
-  <!-- Front End script for MySQL interaction-->
-  <script type="text/javascript" src="js/welcome.js"></script>
-  <script src="js/moods.js"></script>
+  <!-- Home script for MySQL interaction-->
+  <script src="js/home.js"></script>
+  <script type="text/javascript" src="js/members.js"></script>
+
+
+
 
 </body>
 
