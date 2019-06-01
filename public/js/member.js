@@ -7,7 +7,7 @@ $.get("/api/user_data").then(function(data) {
     for (var i = 0; i < data.length; i++) {
       var newButton = $("<a>")
         .addClass("btn btn-xl btn-dark mt-2 mr-2")
-        .attr("href", "#");
+        .attr("href", "/journal");
       newButton.text(data[i].activity);
       $("#action").append(newButton);
     }

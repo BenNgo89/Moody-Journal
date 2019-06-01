@@ -48,18 +48,37 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/api/diary", function(req, res) {
+    if (!req.user) {
+      res.json({});
+    } else {
+      db.Diary.findAll({
+        where: {
+          UserId: req.user.id
+        }
+      }).then(function(dbDiary) {
+        res.json(dbDiary);
+      });
+    }
+  });
+
   //Post route for saving a mood
   app.post("/api/diary", function(req, res) {
     console.log(req.body);
-    //I think my problem is describing the paramter I want to insert into the Diary table.
-    //Passing in the following object may or may not make sense (like req.feeling which I guessed would work from the moods.js file)
+    console.log(req.user);
+    //Before the create, we should query data
     db.Diary.create({
-      mood: req.feeling.mood,
-      value: req.feeling.value,
-      userId: req.user
-    }).then(function(dbDiary) {
-      res.json(dbDiary);
-    });
+      mood: req.body.mood,
+      entry: req.body.value,
+      UserId: req.user.id
+    })
+      .then(function(dbDiary) {
+        res.json(dbDiary);
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+      });
   });
 
   //Post route for user activities
