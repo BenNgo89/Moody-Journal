@@ -32,7 +32,7 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/journal", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/journal.html"))
+  app.get("/journal", isAuthenticated, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/journal.html"));
   });
 };
