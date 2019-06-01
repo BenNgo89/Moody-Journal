@@ -12,8 +12,8 @@ $.get("/api/user_data").then(function (data) {
       var newButton = $("<a>").addClass("btn btn-xl btn-dark mt-2 mr-2");
       newButton.text(data[i].activity);
       //console.log("AA");
-      var newDate = data[i].createdAt.slice(0, 10);
-      newDiv.append(data[i].createdAt).append(newButton);
+      var newDay = data[i].createdAt.slice(0, 10);
+      newDiv.append(newDay).append(newButton);
       $("#activity-section").append(newDiv);
     }
   });
